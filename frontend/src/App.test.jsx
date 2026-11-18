@@ -1,4 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { apiRequest } from "./services/api";
+
+vi.mock("./services/api", () => ({
+  apiRequest: vi.fn()
+}));
 
 describe("Boarding House Management System", () => {
   it("should pass the basic test", () => {
