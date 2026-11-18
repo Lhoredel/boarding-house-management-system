@@ -1,4 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { apiRequest } from "./services/api";
+
+vi.mock("./services/api", () => ({
+  apiRequest: vi.fn()
+}));
 
 describe("Boarding House Management System", () => {
   it("should pass the basic test", () => {
@@ -7,7 +14,6 @@ describe("Boarding House Management System", () => {
 
   it("should have the correct application name", () => {
     const appName = "Boarding House Management System";
-
     expect(appName).toBe("Boarding House Management System");
   });
 });
@@ -25,8 +31,8 @@ describe("App", () => {
 
     expect(screen.getByRole("heading", { name: "Overview" })).toBeInTheDocument();
     expect(screen.getByText(/Welcome! Manage rooms, tenants, payments/)).toBeInTheDocument();
-
     expect(await screen.findByText("2")).toBeInTheDocument();
+
     expect(apiRequest).toHaveBeenCalledWith("/api/rooms");
     expect(apiRequest).toHaveBeenCalledWith("/api/tenants");
     expect(apiRequest).toHaveBeenCalledWith("/api/payments");
