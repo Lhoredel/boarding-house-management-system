@@ -1,30 +1,16 @@
-<<<<<<< HEAD
-
 import { describe, it, expect } from 'vitest';
 
-describe('Boarding House Management System', () => {
-
-  it('should pass the basic test', () => {
+describe("Boarding House Management System", () => {
+  it("should pass the basic test", () => {
     expect(1 + 1).toBe(2);
   });
 
-  it('should have the correct application name', () => {
-    const appName = 'Boarding House Management System';
+  it("should have the correct application name", () => {
+    const appName = "Boarding House Management System";
 
-    expect(appName).toBe(
-      'Boarding House Management System'
-    );
+    expect(appName).toBe("Boarding House Management System");
   });
-
-=======
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
-import App from "./App";
-import { apiRequest } from "./services/api";
-
-vi.mock("./services/api", () => ({
-  apiRequest: vi.fn()
-}));
+});
 
 describe("App", () => {
   beforeEach(() => {
@@ -46,5 +32,4 @@ describe("App", () => {
     expect(apiRequest).toHaveBeenCalledWith("/api/payments");
     expect(apiRequest).toHaveBeenCalledWith("/api/maintenance");
   });
->>>>>>> 39ec3d422d8f1267c0b864dddf5f9c44cdaa77bc
 });
